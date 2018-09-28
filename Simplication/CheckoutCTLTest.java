@@ -29,7 +29,10 @@ import java.util.logging.Logger;
  * @author PC
  */
 public class CheckoutCTLTest {
-    
+
+    //creating a byteArrayOutputStream object
+    //declaring and instanciating
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     
     public CheckoutCTLTest() {
     }
@@ -44,7 +47,9 @@ public class CheckoutCTLTest {
     
     @Before
     public void setUp() {
-
+        //prints out the output of the method
+        System.setOut(new PrintStream(outContent));
+//        System.setErr(new PrintStream(errContent));
         
     }
     

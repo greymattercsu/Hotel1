@@ -71,10 +71,19 @@ public void testRoomIdEntered() {
     } catch (Exception ex) {
         Logger.getLogger(CheckoutCTLTest.class.getName()).log(Level.SEVERE, null, ex);
     }
+
+        //the room ID used in hotelhelper class is 301. So, that is the room ID that is being used.
+        int roomId =301;
+
+        //creating a checkoutCTL object and then passing the hotel object as an argument.
+        CheckoutCTL instance = new CheckoutCTL(hotel);
+        
+        //calling the method to check the roomID that is being entered.
+        instance.roomIdEntered(roomId);
+        
+        
+
 }
-
-
-
 
     
 }

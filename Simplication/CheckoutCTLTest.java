@@ -81,7 +81,11 @@ public void testRoomIdEntered() {
         //calling the method to check the roomID that is being entered.
         instance.roomIdEntered(roomId);
         
-        
+        //the output is then converted to string and then stored to the variable output.
+        String output = outContent.toString();
+
+        //using the assertEquals to check the value of the string
+        assertEquals("$7.00",output);
 
 }
 

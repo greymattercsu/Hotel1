@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -56,41 +57,77 @@ public class SimplifiedAutomatedTest {
     //
     // /**
     // * Test of roomIdEntered method, of class CheckoutCTL.
-    // * This demonstrates that the total charge is reported as 0.00 when checking out
+    // * This demonstrates that the total charge is reported as 0.00 when checking
+    // out
     // */
-@Test
-public void testRoomIdEntered() {
-    System.out.println("roomIdEntered");
-    
-    //declaring the hotel object
-    Hotel hotel = null;
-    
-    //trying the try catch so that any exception that is occured will be captured.
-    try {
-        //instanciating the hotel object
-        hotel = HotelHelper.loadHotel();
-    } catch (Exception ex) {
-        Logger.getLogger(CheckoutCTLTest.class.getName()).log(Level.SEVERE, null, ex);
-    }
+    @Test
+    public void testRoomIdEntered() {
+        System.out.println("roomIdEntered");
 
-        //the room ID used in hotelhelper class is 301. So, that is the room ID that is being used.
-        int roomId =301;
+        // declaring the hotel object
+        Hotel hotel = null;
 
-        //creating a checkoutCTL object and then passing the hotel object as an argument.
+        // trying the try catch so that any exception that is occured will be captured.
+        try {
+            // instanciating the hotel object
+            hotel = HotelHelper.loadHotel();
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutCTLTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // the room ID used in hotelhelper class is 301. So, that is the room ID that is
+        // being used.
+        int roomId = 301;
+
+        // creating a checkoutCTL object and then passing the hotel object as an
+        // argument.
         CheckoutCTL instance = new CheckoutCTL(hotel);
-        
-        //calling the method to check the roomID that is being entered.
+
+        // calling the method to check the roomID that is being entered.
         instance.roomIdEntered(roomId);
-        
-        //the output is then converted to string and then stored to the variable output.
+
+        // the output is then converted to string and then stored to the variable
+        // output.
         String output = outContent.toString();
 
-        //using the assertEquals to check the value of the string
-        //Now comparing the exact value that is expected to the result shown
-        //here substring is used to get the total dollar value from all of the result of the output
-        assertEquals("$7.00",output.substring(output.lastIndexOf(":")+1, output.length()-1 ));
+        // using the assertEquals to check the value of the string
+        // Now comparing the exact value that is expected to the result shown
+        // here substring is used to get the total dollar value from all of the result
+        // of the output
+        assertEquals("$7.00", output.substring(output.lastIndexOf(":") + 1, output.length() - 1));
 
-}
+    }
 
+
+    /**
+     * Test of creditDetailsEntered method, of class CheckoutCTL.
+     */
+   @Test
+   public void testCheckOutAndChargeRoom() {
+       System.out.println("Checkout from the room and then add service charge");
+       Hotel hotel = null;
+
+       //using the roomID that is used in the hotelhelper class
+       int roomId= 301;
+       try {
+           hotel = HotelHelper.loadHotel();
+       } catch (Exception ex) {
+           Logger.getLogger(CheckoutCTLTest.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       //checking out of the hotel
+       hotel.checkout(roomId);
+       
+       
+      
+       System.out.println("Checking serviceDetailsEntered");
+       //adding the room service charge of 20
+       ServiceType serviceType = ServiceType.ROOM_SERVICE;
+       double cost = 20.0;
+
+       
     
+
+   }
+
+
 }

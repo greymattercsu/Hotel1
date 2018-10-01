@@ -101,6 +101,7 @@ public class SimplifiedAutomatedTest {
 
     /**
      * Test of creditDetailsEntered method, of class CheckoutCTL.
+     * /*Checking the possiblility of charging a room for service after the guest has checked out
      */
    @Test
    public void testCheckOutAndChargeRoom() {
@@ -137,6 +138,53 @@ public class SimplifiedAutomatedTest {
     
 
    }
+
+
+//    possible to charge a room for service after the guest has checked out. Two services are added.
+    @Test
+    public void testCheckOutAnd2ChargeRoom() {
+        System.out.println("Checkout from the room and then add service charge");
+        Hotel hotel = null;
+ 
+        //using the roomID that is used in the hotelhelper class
+        int roomId= 301;
+        try {
+            hotel = HotelHelper.loadHotel();
+        } catch (Exception ex) {
+            Logger.getLogger(CheckoutCTLTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //checking out of the hotel
+        hotel.checkout(roomId);
+        
+        
+       
+        System.out.println("Checking serviceDetailsEntered");
+        //adding the room service charge of 20
+        ServiceType serviceType = ServiceType.ROOM_SERVICE;
+        double cost = 20.0;
+ 
+        //creating the instance of the record service 
+        RecordServiceCTL instance = new RecordServiceCTL(hotel);
+        instance.roomNumberEntered(roomId);
+        //adding the service name and charge to the record service
+        instance.serviceDetailsEntered(serviceType, cost);
+        
+ 
+
+        //creating the instance of the record service 
+        instance = new RecordServiceCTL(hotel);
+        instance.roomNumberEntered(roomId);
+        //adding the service name and charge to the record service
+        instance.serviceDetailsEntered(serviceType, cost);
+        String output = outContent.toString();
+
+
+        //here the output should be no active booking found. Here two services are added to check if they are added to the system.
+        //But this will add service charge to the room ID even if this room has checked out
+        assertEquals("No active booking for room id: 201",output.substring(output.lastIndexOf("Entered")+7, output.length()-1));
+     
+ 
+    }
 
 
 }

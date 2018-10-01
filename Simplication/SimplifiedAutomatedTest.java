@@ -24,13 +24,13 @@ import java.util.logging.Logger;
  *
  * @author PC
  */
-public class CheckoutCTLTest {
+public class SimplifiedAutomatedTest {
 
     // creating a byteArrayOutputStream object
     // declaring and instanciating
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    public CheckoutCTLTest() {
+    public SimplifiedAutomatedTest() {
     }
 
     @BeforeClass
@@ -56,6 +56,7 @@ public class CheckoutCTLTest {
     //
     // /**
     // * Test of roomIdEntered method, of class CheckoutCTL.
+    // * This demonstrates that the total charge is reported as 0.00 when checking out
     // */
 @Test
 public void testRoomIdEntered() {

@@ -26,6 +26,8 @@ public class CheckoutCTL {
 	public CheckoutCTL(Hotel hotel) {
 		this.hotel = hotel;
 		this.checkoutUI = new CheckoutUI(this);
+		//this portion is added to the code so that it will work on testing purpose
+		state = State.ROOM;
 	}
 
 	

@@ -28,14 +28,14 @@ public class HotelHelper {
 		
 		
 		Hotel hotel = new Hotel();
-		hotel.addRoom(RoomType.SINGLE, 101);
-		hotel.addRoom(RoomType.DOUBLE, 201);
+		// hotel.addRoom(RoomType.SINGLE, 101);
+		// hotel.addRoom(RoomType.DOUBLE, 201);
 		hotel.addRoom(RoomType.TWIN_SHARE, 301);
 		
 		Guest guest = new Guest("Fred", "Nurke", 2);
 		CreditCard card = new CreditCard(CreditCardType.VISA, 2, 2);
 		
-		Room room = hotel.findAvailableRoom(RoomType.TWIN_SHARE, date, 1);
+		Room room = hotel.findAvailableRoom(RoomType.DOUBLE, date, 1);
 		long confNo = hotel.book(room, guest, date, 1, 2, card);
 		Booking booking = hotel.findBookingByConfirmationNumber(confNo);
 		hotel.checkin(confNo);

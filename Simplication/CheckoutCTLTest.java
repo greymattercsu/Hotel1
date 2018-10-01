@@ -85,7 +85,9 @@ public void testRoomIdEntered() {
         String output = outContent.toString();
 
         //using the assertEquals to check the value of the string
-        assertEquals("$7.00",output);
+        //Now comparing the exact value that is expected to the result shown
+        //here substring is used to get the total dollar value from all of the result of the output
+        assertEquals("$7.00",output.substring(output.lastIndexOf(":")+1, output.length()-1 ));
 
 }
 

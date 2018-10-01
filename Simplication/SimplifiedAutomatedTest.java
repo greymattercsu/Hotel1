@@ -124,7 +124,16 @@ public class SimplifiedAutomatedTest {
        ServiceType serviceType = ServiceType.ROOM_SERVICE;
        double cost = 20.0;
 
-       
+       //creating the instance of the record service 
+       RecordServiceCTL instance = new RecordServiceCTL(hotel);
+       instance.roomNumberEntered(roomId);
+       //adding the service name and charge to the record service
+       instance.serviceDetailsEntered(serviceType, cost);
+       String output = outContent.toString();
+
+       //here the output should be no active booking found 
+       //But this will add service charge to the room ID even if this room has checked out
+       assertEquals("No active booking for room id: 201",output.substring(output.lastIndexOf("Entered")+7, output.length()-1));
     
 
    }
